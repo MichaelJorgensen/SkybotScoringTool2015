@@ -65,7 +65,7 @@ public class Main {
     }
 
     private void setupSQL() {
-        sql = new SQL(new SQLiteOptions(new File(new JFileChooser().getFileSystemView().getDefaultDirectory() + "\\Skybot.db")));
+        sql = new SQL(new SQLiteOptions(new File("Skybot.db")));
         send("Opening connection to db");
         try {
             sql.open();
