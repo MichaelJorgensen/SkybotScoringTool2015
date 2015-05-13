@@ -28,6 +28,8 @@ public class Main {
                 try {
                     new Main();
                 } catch (Exception e) {
+                    loadingFrame.destroy();
+                    Main.error("Error loading program, message: " + e.getMessage());
                     e.printStackTrace();
                 }
             }

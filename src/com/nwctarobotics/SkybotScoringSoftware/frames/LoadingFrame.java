@@ -32,8 +32,8 @@ public class LoadingFrame extends JFrame {
         lblLoading.setHorizontalAlignment(SwingConstants.CENTER);
         lblLoading.setForeground(Color.WHITE);
         contentPane.add(lblLoading, BorderLayout.CENTER);
-        
-        desc = new JLabel("Connecting to database...");
+
+        desc = new JLabel("Loading database...");
         desc.setFont(new Font("LCD", Font.PLAIN, 20));
         desc.setHorizontalAlignment(SwingConstants.CENTER);
         desc.setForeground(Color.WHITE);
