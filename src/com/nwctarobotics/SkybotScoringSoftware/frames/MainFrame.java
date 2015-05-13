@@ -313,7 +313,8 @@ public class MainFrame {
         panel_1.add(btnModify);
 
         JLabel lblEnterMatchData = new JLabel("Enter Match Data");
-        lblEnterMatchData.setBounds(294, 480, 94, 14);
+        lblEnterMatchData.setHorizontalAlignment(SwingConstants.CENTER);
+        lblEnterMatchData.setBounds(276, 480, 112, 14);
         panel_1.add(lblEnterMatchData);
 
         JLabel lblMatch_1 = new JLabel("Match #");
@@ -321,7 +322,7 @@ public class MainFrame {
         panel_1.add(lblMatch_1);
 
         JLabel lblBlueScore_1 = new JLabel("Blue Score");
-        lblBlueScore_1.setBounds(306, 506, 60, 14);
+        lblBlueScore_1.setBounds(294, 506, 72, 14);
         panel_1.add(lblBlueScore_1);
 
         JLabel lblRedScore_1 = new JLabel("Red Score");
