@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import javax.swing.JFileChooser;
 
 import com.nwctarobotics.SkybotScoringSoftware.frames.ErrorFrame;
+import com.nwctarobotics.SkybotScoringSoftware.frames.LoadingFrame;
 import com.nwctarobotics.SkybotScoringSoftware.frames.MainFrame;
 import com.nwctarobotics.SkybotScoringSoftware.sql.SQL;
 import com.nwctarobotics.SkybotScoringSoftware.sql.options.SQLiteOptions;
@@ -18,8 +19,10 @@ public class Main {
     private MatchHandler m;
 
     private MainFrame mainFrame;
+    private static LoadingFrame loadingFrame;
 
     public static void main(String[] args) {
+        loadingFrame = new LoadingFrame();
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -36,6 +39,7 @@ public class Main {
         mainFrame = new MainFrame(this);
         h = new TeamHandler(this, mainFrame.getTeamList());
         m = new MatchHandler(this, mainFrame.getMatchTable());
+        loadingFrame.destroy();
     }
 
     public static void send(String message) {

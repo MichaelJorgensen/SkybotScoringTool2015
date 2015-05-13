@@ -47,6 +47,7 @@ public class MainFrame {
         tabbedPane.setBorder(null);
         tabbedPane.setBounds(0, 0, 699, 639);
         frmSkybotScoringSoftware.getContentPane().add(tabbedPane);
+        frmSkybotScoringSoftware.setLocationRelativeTo(null);
 
         panel = new JPanel();
         panel.setBorder(null);
@@ -94,11 +95,11 @@ public class MainFrame {
         panel_1.add(lblRecordNewMatch);
 
         JLabel lblModifyOldMatch = new JLabel("Modify Old Match");
-        lblModifyOldMatch.setBounds(279, 185, 104, 14);
+        lblModifyOldMatch.setBounds(294, 181, 104, 14);
         panel_1.add(lblModifyOldMatch);
 
         JLabel lblDeleteMatch = new JLabel("Delete Match");
-        lblDeleteMatch.setBounds(297, 370, 81, 14);
+        lblDeleteMatch.setBounds(290, 370, 81, 14);
         panel_1.add(lblDeleteMatch);
 
         textField_3 = new JTextField();
@@ -182,7 +183,7 @@ public class MainFrame {
                 }
             }
         });
-        btnRecord.setBounds(279, 82, 89, 23);
+        btnRecord.setBounds(294, 82, 89, 23);
         panel_1.add(btnRecord);
 
         textField_10 = new JTextField();
@@ -250,11 +251,11 @@ public class MainFrame {
 
         textField_17 = new JTextField();
         textField_17.setColumns(10);
-        textField_17.setBounds(279, 420, 86, 20);
+        textField_17.setBounds(290, 420, 86, 20);
         panel_1.add(textField_17);
 
         JLabel label_7 = new JLabel("Match #");
-        label_7.setBounds(307, 395, 46, 14);
+        label_7.setBounds(290, 395, 46, 14);
         panel_1.add(label_7);
 
         JButton btnDelete = new JButton("Delete");
@@ -269,7 +270,7 @@ public class MainFrame {
                 }
             }
         });
-        btnDelete.setBounds(279, 451, 89, 23);
+        btnDelete.setBounds(290, 451, 89, 23);
         panel_1.add(btnDelete);
 
         JButton btnModify = new JButton("Modify");
@@ -290,7 +291,7 @@ public class MainFrame {
                 }
             }
         });
-        btnModify.setBounds(294, 267, 89, 23);
+        btnModify.setBounds(290, 267, 89, 23);
         panel_1.add(btnModify);
 
         JPanel panel_2 = new JPanel();

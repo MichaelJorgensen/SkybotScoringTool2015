@@ -31,6 +31,7 @@ public class ErrorFrame extends JFrame {
         btnClose.addActionListener(new ErrorFrameListener(this));
         btnClose.setBounds(176, 103, 89, 23);
         contentPane.add(btnClose);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 }
