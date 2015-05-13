@@ -70,12 +70,46 @@ public class MatchHandler {
         }
         return false;
     }
+    
+    public boolean recordPartialMatch(int id, String blue1, String blue2, String red1, String red2) {
+        refreshMatches();
+        if (!matches.containsKey(id)) {
+            try {
+                main.getSQL().query("INSERT INTO skybotMatches (matchID, blue1, blue2, red1, red2, blueScore, redScore) VALUES (" + id + ", '" + blue1 + "', '" + blue2 + "', '" + red1 + "', '" + red2 + "', " + 0 + ", " + 0 + ")");
+                refreshMatches();
+                return true;
+            } catch (SQLException e) {
+                e.printStackTrace();
+                Main.error("Error setting match, error message: " + e.getMessage());
+            }
+        } else {
+            Main.error("Match already exists, either MODIFY the match or DELETE the match and try again");
+        }
+        return false;
+    }
 
     public boolean modifyMatch(int id, String blue1, String blue2, String red1, String red2, int blueScore, int redScore) {
         refreshMatches();
         if (matches.containsKey(id)) {
             try {
                 main.getSQL().query("UPDATE skybotMatches SET blue1='" + blue1 + "', blue2='" + blue2 + "', red1='" + red1 + "', red2='" + red2 + "', blueScore=" + blueScore + ", redScore=" + redScore + " WHERE matchID=" + id);
+                refreshMatches();
+                return true;
+            } catch (SQLException e) {
+                e.printStackTrace();
+                Main.error("Database error modifying match, message: " + e.getMessage());
+            }
+        } else {
+            Main.error("Match doesn't exist");
+        }
+        return false;
+    }
+    
+    public boolean updatePartialMatch(int id, int blueScore, int redScore) {
+        refreshMatches();
+        if (matches.containsKey(id)) {
+            try {
+                main.getSQL().query("UPDATE skybotMatches SET blueScore=" + blueScore + ", redScore=" + redScore + " WHERE matchID=" + id);
                 refreshMatches();
                 return true;
             } catch (SQLException e) {

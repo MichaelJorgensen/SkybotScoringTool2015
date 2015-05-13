@@ -40,6 +40,9 @@ public class MainFrame {
     private JTextField textField_16;
     private JTextField textField_17;
     private JTable table;
+    private JTextField textField_18;
+    private JTextField textField_19;
+    private JTextField textField_20;
 
     public MainFrame(final Main main) {
         initialize();
@@ -99,7 +102,7 @@ public class MainFrame {
         panel_1.add(lblModifyOldMatch);
 
         JLabel lblDeleteMatch = new JLabel("Delete Match");
-        lblDeleteMatch.setBounds(290, 370, 81, 14);
+        lblDeleteMatch.setBounds(302, 319, 81, 14);
         panel_1.add(lblDeleteMatch);
 
         textField_3 = new JTextField();
@@ -168,6 +171,21 @@ public class MainFrame {
         JButton btnRecord = new JButton("Record");
         btnRecord.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                if (textField_8.getText().isEmpty() && textField_9.getText().isEmpty()) {
+                    try {
+                        if (main.getMatchHandler().recordPartialMatch(Integer.valueOf(textField_3.getText()), textField_4.getText(), textField_5.getText(), textField_6.getText(), textField_7.getText())) {
+                            textField_3.setText(null);
+                            textField_4.setText(null);
+                            textField_5.setText(null);
+                            textField_6.setText(null);
+                            textField_7.setText(null);
+                            return;
+                        }
+                    } catch (NumberFormatException ex) {
+                        Main.error("Number expected, but got " + ex.getMessage());
+                        return;
+                    }
+                }
                 try {
                     if (main.getMatchHandler().recordMatch(Integer.valueOf(textField_3.getText()), textField_4.getText(), textField_5.getText(), textField_6.getText(), textField_7.getText(), Integer.valueOf(textField_8.getText()), Integer.valueOf(textField_9.getText()))) {
                         textField_3.setText(null);
@@ -183,7 +201,7 @@ public class MainFrame {
                 }
             }
         });
-        btnRecord.setBounds(294, 82, 89, 23);
+        btnRecord.setBounds(294, 67, 89, 23);
         panel_1.add(btnRecord);
 
         textField_10 = new JTextField();
@@ -197,65 +215,65 @@ public class MainFrame {
 
         textField_11 = new JTextField();
         textField_11.setColumns(10);
-        textField_11.setBounds(106, 225, 86, 20);
+        textField_11.setBounds(294, 225, 86, 20);
         panel_1.add(textField_11);
 
         JLabel label_1 = new JLabel("Blue 1");
-        label_1.setBounds(122, 210, 46, 14);
+        label_1.setBounds(310, 210, 46, 14);
         panel_1.add(label_1);
 
         textField_12 = new JTextField();
         textField_12.setColumns(10);
-        textField_12.setBounds(202, 225, 86, 20);
+        textField_12.setBounds(390, 225, 86, 20);
         panel_1.add(textField_12);
 
         JLabel label_2 = new JLabel("Blue 2");
-        label_2.setBounds(218, 210, 46, 14);
+        label_2.setBounds(406, 210, 46, 14);
         panel_1.add(label_2);
 
         JLabel label_3 = new JLabel("Red 1");
-        label_3.setBounds(320, 210, 46, 14);
+        label_3.setBounds(508, 210, 46, 14);
         panel_1.add(label_3);
 
         textField_13 = new JTextField();
         textField_13.setColumns(10);
-        textField_13.setBounds(297, 225, 86, 20);
+        textField_13.setBounds(485, 225, 86, 20);
         panel_1.add(textField_13);
 
         textField_14 = new JTextField();
         textField_14.setColumns(10);
-        textField_14.setBounds(393, 225, 86, 20);
+        textField_14.setBounds(581, 225, 86, 20);
         panel_1.add(textField_14);
 
         JLabel label_4 = new JLabel("Red 2");
-        label_4.setBounds(411, 210, 46, 14);
+        label_4.setBounds(599, 210, 46, 14);
         panel_1.add(label_4);
 
         JLabel label_5 = new JLabel("Blue Score");
-        label_5.setBounds(499, 210, 65, 14);
+        label_5.setBounds(116, 210, 65, 14);
         panel_1.add(label_5);
 
         textField_15 = new JTextField();
         textField_15.setColumns(10);
-        textField_15.setBounds(489, 225, 86, 20);
+        textField_15.setBounds(106, 225, 86, 20);
         panel_1.add(textField_15);
 
         textField_16 = new JTextField();
         textField_16.setColumns(10);
-        textField_16.setBounds(585, 225, 86, 20);
+        textField_16.setBounds(202, 225, 86, 20);
         panel_1.add(textField_16);
 
         JLabel label_6 = new JLabel("Red Score");
-        label_6.setBounds(593, 210, 67, 14);
+        label_6.setBounds(210, 210, 67, 14);
         panel_1.add(label_6);
 
         textField_17 = new JTextField();
         textField_17.setColumns(10);
-        textField_17.setBounds(290, 420, 86, 20);
+        textField_17.setBounds(294, 369, 86, 20);
         panel_1.add(textField_17);
 
         JLabel label_7 = new JLabel("Match #");
-        label_7.setBounds(290, 395, 46, 14);
+        label_7.setBounds(320, 344, 46, 14);
         panel_1.add(label_7);
 
         JButton btnDelete = new JButton("Delete");
@@ -270,7 +288,7 @@ public class MainFrame {
                 }
             }
         });
-        btnDelete.setBounds(290, 451, 89, 23);
+        btnDelete.setBounds(294, 400, 89, 23);
         panel_1.add(btnDelete);
 
         JButton btnModify = new JButton("Modify");
@@ -293,6 +311,55 @@ public class MainFrame {
         });
         btnModify.setBounds(290, 267, 89, 23);
         panel_1.add(btnModify);
+        
+        JLabel lblEnterMatchData = new JLabel("Enter Match Data");
+        lblEnterMatchData.setBounds(294, 480, 94, 14);
+        panel_1.add(lblEnterMatchData);
+        
+        JLabel lblMatch_1 = new JLabel("Match #");
+        lblMatch_1.setBounds(218, 506, 46, 14);
+        panel_1.add(lblMatch_1);
+        
+        JLabel lblBlueScore_1 = new JLabel("Blue Score");
+        lblBlueScore_1.setBounds(306, 506, 60, 14);
+        panel_1.add(lblBlueScore_1);
+        
+        JLabel lblRedScore_1 = new JLabel("Red Score");
+        lblRedScore_1.setBounds(411, 506, 65, 14);
+        panel_1.add(lblRedScore_1);
+        
+        textField_18 = new JTextField();
+        textField_18.setBounds(178, 528, 86, 20);
+        panel_1.add(textField_18);
+        textField_18.setColumns(10);
+        
+        textField_19 = new JTextField();
+        textField_19.setBounds(289, 531, 86, 20);
+        panel_1.add(textField_19);
+        textField_19.setColumns(10);
+        
+        textField_20 = new JTextField();
+        textField_20.setBounds(393, 528, 86, 20);
+        panel_1.add(textField_20);
+        textField_20.setColumns(10);
+        
+        JButton btnEnter = new JButton("Enter");
+        btnEnter.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                   if (main.getMatchHandler().updatePartialMatch(Integer.valueOf(textField_18.getText()), Integer.valueOf(textField_19.getText()), Integer.valueOf(textField_20.getText()))) {
+                       textField_18.setText(null);
+                       textField_19.setText(null);
+                       textField_20.setText(null);
+                       textField_18.transferFocus();
+                   }
+                } catch (NumberFormatException ex) {
+                    Main.error("Expected number, got " + ex.getMessage());
+                }
+            }
+        });
+        btnEnter.setBounds(286, 562, 89, 23);
+        panel_1.add(btnEnter);
 
         JPanel panel_2 = new JPanel();
         tabbedPane.addTab("Match View", null, panel_2, null);

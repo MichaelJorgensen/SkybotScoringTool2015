@@ -4,8 +4,6 @@ import java.awt.EventQueue;
 import java.io.File;
 import java.sql.SQLException;
 
-import javax.swing.JFileChooser;
-
 import com.nwctarobotics.SkybotScoringSoftware.frames.ErrorFrame;
 import com.nwctarobotics.SkybotScoringSoftware.frames.LoadingFrame;
 import com.nwctarobotics.SkybotScoringSoftware.frames.MainFrame;
