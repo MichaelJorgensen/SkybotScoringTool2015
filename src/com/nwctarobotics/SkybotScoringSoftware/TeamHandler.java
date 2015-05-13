@@ -19,7 +19,7 @@ public class TeamHandler {
     }
 
     public void refreshTeams() {
-        send("Refreshing teams");
+        Main.send("Refreshing teams");
         HashMap<String, Team> newTeams = new HashMap<String, Team>();
         try {
             ResultSet rs = main.getSQL().query("SELECT teamName FROM skybotTeams");
@@ -43,15 +43,14 @@ public class TeamHandler {
         teamList.setText(sb.toString());
         teams.clear();
         teams.putAll(newTeams);
-        send("TeamsRecorded: " + teams.keySet().toString());
     }
 
     public boolean addTeam(String name) {
         if (name == null || name.isEmpty() || name.replaceAll(" ", "").isEmpty()) {
-            send("no name given");
+            Main.error("No Name Given");
             return false;
         }
-        send("adding team: " + name);
+        Main.send("adding team: " + name);
         refreshTeams();
         if (!teams.containsKey(name)) {
             try {
@@ -62,14 +61,14 @@ public class TeamHandler {
                 e.printStackTrace();
             }
         } else {
-            send("team already exists");
+            Main.error("Team Already Exists");
         }
         return false;
     }
 
     public boolean removeTeam(String name) {
         if (name == null || name.isEmpty() || name.replaceAll(" ", "").isEmpty()) {
-            send("no name given");
+            Main.error("No Name Given");
             return false;
         }
         refreshTeams();
@@ -82,13 +81,8 @@ public class TeamHandler {
                 e.printStackTrace();
             }
         } else {
-            send("team doesn't exist");
+            Main.error("Team Doesn't Exist");
         }
         return false;
     }
-
-    private void send(String message) {
-        System.out.println(message);
-    }
-
 }
