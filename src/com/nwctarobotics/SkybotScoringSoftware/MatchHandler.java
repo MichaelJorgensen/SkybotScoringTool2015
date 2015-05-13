@@ -1,20 +1,25 @@
 package com.nwctarobotics.SkybotScoringSoftware;
 
-import java.awt.TextArea;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 public class MatchHandler {
 
     private Main main;
-    private TextArea list;
     private HashMap<Integer, Match> matches = new HashMap<Integer, Match>();
 
-    public MatchHandler(Main main, TextArea list) {
+    DefaultTableModel d = new DefaultTableModel(0, 7);
+    String[] columns = new String[] { "Match #", "Blue 1", "Blue 2", "Red 1", "Red 2", "Blue Score", "Red Score" };
+
+    public MatchHandler(Main main, JTable table) {
         this.main = main;
-        this.list = list;
+        d.setColumnIdentifiers(columns);
+        table.setModel(d);
         refreshMatches();
     }
 
@@ -38,14 +43,13 @@ public class MatchHandler {
         }
         if (newMatches.isEmpty()) {
             matches.clear();
-            list.setText("No matches yet");
+            d.setRowCount(0);
             return;
         }
-        StringBuilder sb = new StringBuilder();
+        d.setRowCount(0);
         for (Entry<Integer, Match> en : newMatches.entrySet()) {
-            sb.append("Match " + en.getKey() + ": Blue1: " + en.getValue().getBlue1().getName() + ", Blue2: " + en.getValue().getBlue2().getName() + ", Red1: " + en.getValue().getRed1().getName() + ", Red2: " + en.getValue().getRed2().getName() + ", BlueScore: " + en.getValue().getBlueScore() + ", RedScore: " + en.getValue().getRedScore() + "\n");
+            d.addRow(new Object[] { en.getKey(), en.getValue().getBlue1().getName(), en.getValue().getBlue2().getName(), en.getValue().getRed1().getName(), en.getValue().getRed2().getName(), en.getValue().getBlueScore(), en.getValue().getRedScore() });
         }
-        list.setText(sb.toString());
         matches.clear();
         matches.putAll(newMatches);
     }

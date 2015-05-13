@@ -12,13 +12,13 @@ import com.nwctarobotics.SkybotScoringSoftware.sql.SQL;
 import com.nwctarobotics.SkybotScoringSoftware.sql.options.SQLiteOptions;
 
 public class Main {
-    
+
     private SQL sql;
     private TeamHandler h;
     private MatchHandler m;
-    
+
     private MainFrame mainFrame;
-    
+
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -30,34 +30,34 @@ public class Main {
             }
         });
     }
-    
+
     public Main() {
         setupSQL();
         mainFrame = new MainFrame(this);
         h = new TeamHandler(this, mainFrame.getTeamList());
-        m = new MatchHandler(this, mainFrame.getTextArea());
+        m = new MatchHandler(this, mainFrame.getMatchTable());
     }
-    
+
     public static void send(String message) {
         System.out.println(message);
     }
-    
+
     public static void error(String error) {
         new ErrorFrame(error);
     }
-    
+
     public SQL getSQL() {
         return sql;
     }
-    
+
     public TeamHandler getTeamHandler() {
         return h;
     }
-    
+
     public MatchHandler getMatchHandler() {
         return m;
     }
-    
+
     private void setupSQL() {
         sql = new SQL(new SQLiteOptions(new File(new JFileChooser().getFileSystemView().getDefaultDirectory() + "\\Skybot.db")));
         send("Opening connection to db");

@@ -8,13 +8,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import com.nwctarobotics.SkybotScoringSoftware.Main;
-import javax.swing.JInternalFrame;
-import java.awt.TextArea;
-import java.awt.Button;
+import javax.swing.JScrollPane;
 
 public class MainFrame {
 
@@ -25,7 +24,6 @@ public class MainFrame {
     private JButton btnRefresh;
     private JPanel panel;
     private JPanel panel_1;
-    private TextArea textArea;
     private JTextField textField_3;
     private JTextField textField_4;
     private JTextField textField_5;
@@ -41,10 +39,8 @@ public class MainFrame {
     private JTextField textField_15;
     private JTextField textField_16;
     private JTextField textField_17;
+    private JTable table;
 
-    /**
-     * Create the application.
-     */
     public MainFrame(final Main main) {
         initialize();
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -92,95 +88,95 @@ public class MainFrame {
         panel_1 = new JPanel();
         tabbedPane.addTab("Matches", null, panel_1, null);
         panel_1.setLayout(null);
-        
+
         JLabel lblRecordNewMatch = new JLabel("Record New Match");
         lblRecordNewMatch.setBounds(294, 0, 121, 14);
         panel_1.add(lblRecordNewMatch);
-        
+
         JLabel lblModifyOldMatch = new JLabel("Modify Old Match");
         lblModifyOldMatch.setBounds(279, 185, 104, 14);
         panel_1.add(lblModifyOldMatch);
-        
+
         JLabel lblDeleteMatch = new JLabel("Delete Match");
         lblDeleteMatch.setBounds(297, 370, 81, 14);
         panel_1.add(lblDeleteMatch);
-        
+
         textField_3 = new JTextField();
         textField_3.setBounds(10, 36, 86, 20);
         panel_1.add(textField_3);
         textField_3.setColumns(10);
-        
+
         textField_4 = new JTextField();
         textField_4.setBounds(106, 36, 86, 20);
         panel_1.add(textField_4);
         textField_4.setColumns(10);
-        
+
         textField_5 = new JTextField();
         textField_5.setBounds(202, 36, 86, 20);
         panel_1.add(textField_5);
         textField_5.setColumns(10);
-        
+
         textField_6 = new JTextField();
         textField_6.setBounds(297, 36, 86, 20);
         panel_1.add(textField_6);
         textField_6.setColumns(10);
-        
+
         textField_7 = new JTextField();
         textField_7.setBounds(393, 36, 86, 20);
         panel_1.add(textField_7);
         textField_7.setColumns(10);
-        
+
         textField_8 = new JTextField();
         textField_8.setBounds(489, 36, 86, 20);
         panel_1.add(textField_8);
         textField_8.setColumns(10);
-        
+
         textField_9 = new JTextField();
         textField_9.setBounds(585, 36, 86, 20);
         panel_1.add(textField_9);
         textField_9.setColumns(10);
-        
+
         JLabel lblMatch = new JLabel("Match #");
         lblMatch.setBounds(26, 21, 46, 14);
         panel_1.add(lblMatch);
-        
+
         JLabel lblBlue = new JLabel("Blue 1");
         lblBlue.setBounds(122, 21, 46, 14);
         panel_1.add(lblBlue);
-        
+
         JLabel lblBlue_1 = new JLabel("Blue 2");
         lblBlue_1.setBounds(218, 21, 46, 14);
         panel_1.add(lblBlue_1);
-        
+
         JLabel lblRed = new JLabel("Red 1");
         lblRed.setBounds(320, 21, 46, 14);
         panel_1.add(lblRed);
-        
+
         JLabel lblRed_1 = new JLabel("Red 2");
         lblRed_1.setBounds(411, 21, 46, 14);
         panel_1.add(lblRed_1);
-        
+
         JLabel lblBlueScore = new JLabel("Blue Score");
         lblBlueScore.setBounds(499, 21, 65, 14);
         panel_1.add(lblBlueScore);
-        
+
         JLabel lblRedScore = new JLabel("Red Score");
         lblRedScore.setBounds(593, 21, 67, 14);
         panel_1.add(lblRedScore);
-        
+
         JButton btnRecord = new JButton("Record");
         btnRecord.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                     if (main.getMatchHandler().recordMatch(Integer.valueOf(textField_3.getText()), textField_4.getText(), textField_5.getText(), textField_6.getText(), textField_7.getText(), Integer.valueOf(textField_8.getText()), Integer.valueOf(textField_9.getText()))) {
-                         textField_3.setText(null);
-                         textField_4.setText(null);
-                         textField_5.setText(null);
-                         textField_6.setText(null);
-                         textField_7.setText(null);
-                         textField_8.setText(null);
-                         textField_9.setText(null);
-                     }
+                    if (main.getMatchHandler().recordMatch(Integer.valueOf(textField_3.getText()), textField_4.getText(), textField_5.getText(), textField_6.getText(), textField_7.getText(), Integer.valueOf(textField_8.getText()), Integer.valueOf(textField_9.getText()))) {
+                        textField_3.setText(null);
+                        textField_4.setText(null);
+                        textField_5.setText(null);
+                        textField_6.setText(null);
+                        textField_7.setText(null);
+                        textField_8.setText(null);
+                        textField_9.setText(null);
+                    }
                 } catch (NumberFormatException ex) {
                     Main.error("Number expected, but got " + ex.getMessage());
                 }
@@ -188,79 +184,79 @@ public class MainFrame {
         });
         btnRecord.setBounds(279, 82, 89, 23);
         panel_1.add(btnRecord);
-        
+
         textField_10 = new JTextField();
         textField_10.setColumns(10);
         textField_10.setBounds(10, 225, 86, 20);
         panel_1.add(textField_10);
-        
+
         JLabel label = new JLabel("Match #");
         label.setBounds(26, 210, 46, 14);
         panel_1.add(label);
-        
+
         textField_11 = new JTextField();
         textField_11.setColumns(10);
         textField_11.setBounds(106, 225, 86, 20);
         panel_1.add(textField_11);
-        
+
         JLabel label_1 = new JLabel("Blue 1");
         label_1.setBounds(122, 210, 46, 14);
         panel_1.add(label_1);
-        
+
         textField_12 = new JTextField();
         textField_12.setColumns(10);
         textField_12.setBounds(202, 225, 86, 20);
         panel_1.add(textField_12);
-        
+
         JLabel label_2 = new JLabel("Blue 2");
         label_2.setBounds(218, 210, 46, 14);
         panel_1.add(label_2);
-        
+
         JLabel label_3 = new JLabel("Red 1");
         label_3.setBounds(320, 210, 46, 14);
         panel_1.add(label_3);
-        
+
         textField_13 = new JTextField();
         textField_13.setColumns(10);
         textField_13.setBounds(297, 225, 86, 20);
         panel_1.add(textField_13);
-        
+
         textField_14 = new JTextField();
         textField_14.setColumns(10);
         textField_14.setBounds(393, 225, 86, 20);
         panel_1.add(textField_14);
-        
+
         JLabel label_4 = new JLabel("Red 2");
         label_4.setBounds(411, 210, 46, 14);
         panel_1.add(label_4);
-        
+
         JLabel label_5 = new JLabel("Blue Score");
         label_5.setBounds(499, 210, 65, 14);
         panel_1.add(label_5);
-        
+
         textField_15 = new JTextField();
         textField_15.setColumns(10);
         textField_15.setBounds(489, 225, 86, 20);
         panel_1.add(textField_15);
-        
+
         textField_16 = new JTextField();
         textField_16.setColumns(10);
         textField_16.setBounds(585, 225, 86, 20);
         panel_1.add(textField_16);
-        
+
         JLabel label_6 = new JLabel("Red Score");
         label_6.setBounds(593, 210, 67, 14);
         panel_1.add(label_6);
-        
+
         textField_17 = new JTextField();
         textField_17.setColumns(10);
         textField_17.setBounds(279, 420, 86, 20);
         panel_1.add(textField_17);
-        
+
         JLabel label_7 = new JLabel("Match #");
         label_7.setBounds(307, 395, 46, 14);
         panel_1.add(label_7);
-        
+
         JButton btnDelete = new JButton("Delete");
         btnDelete.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -275,7 +271,7 @@ public class MainFrame {
         });
         btnDelete.setBounds(279, 451, 89, 23);
         panel_1.add(btnDelete);
-        
+
         JButton btnModify = new JButton("Modify");
         btnModify.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -296,16 +292,11 @@ public class MainFrame {
         });
         btnModify.setBounds(294, 267, 89, 23);
         panel_1.add(btnModify);
-        
+
         JPanel panel_2 = new JPanel();
         tabbedPane.addTab("Match View", null, panel_2, null);
         panel_2.setLayout(null);
-        
-        textArea = new TextArea();
-        textArea.setEditable(false);
-        textArea.setBounds(10, 62, 674, 539);
-        panel_2.add(textArea);
-        
+
         JButton btnRefresh_1 = new JButton("Refresh");
         btnRefresh_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -314,15 +305,25 @@ public class MainFrame {
         });
         btnRefresh_1.setBounds(301, 21, 89, 23);
         panel_2.add(btnRefresh_1);
-        
+
         JButton btnLaunchPrettyVersion = new JButton("Launch Audience Version");
         btnLaunchPrettyVersion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new AudienceFrame();
+                if (!AudienceFrame.deployed) {
+                    new AudienceFrame();
+                }
             }
         });
         btnLaunchPrettyVersion.setBounds(466, 21, 200, 23);
         panel_2.add(btnLaunchPrettyVersion);
+
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setBounds(10, 55, 674, 545);
+        panel_2.add(scrollPane);
+
+        table = new JTable();
+        scrollPane.setViewportView(table);
+        table.setColumnSelectionAllowed(true);
         btnRefresh.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 main.getTeamHandler().refreshTeams();
@@ -347,14 +348,11 @@ public class MainFrame {
     public JTextField getTeamList() {
         return textField_2;
     }
-    
-    public TextArea getTextArea() {
-        return textArea;
+
+    public JTable getMatchTable() {
+        return table;
     }
 
-    /**
-     * Initialize the contents of the frame.
-     */
     private void initialize() {
         frmSkybotScoringSoftware = new JFrame();
         frmSkybotScoringSoftware.setResizable(false);

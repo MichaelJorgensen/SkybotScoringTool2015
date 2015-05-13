@@ -11,9 +11,6 @@ public class ErrorFrame extends JFrame {
 
     private JPanel contentPane;
 
-    /**
-     * Create the frame.
-     */
     public ErrorFrame(String error) {
         setResizable(false);
         setAlwaysOnTop(true);
