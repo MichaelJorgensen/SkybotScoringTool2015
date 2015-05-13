@@ -70,7 +70,7 @@ public class MatchHandler {
         }
         return false;
     }
-    
+
     public boolean recordPartialMatch(int id, String blue1, String blue2, String red1, String red2) {
         refreshMatches();
         if (!matches.containsKey(id)) {
@@ -104,7 +104,7 @@ public class MatchHandler {
         }
         return false;
     }
-    
+
     public boolean updatePartialMatch(int id, int blueScore, int redScore) {
         refreshMatches();
         if (matches.containsKey(id)) {

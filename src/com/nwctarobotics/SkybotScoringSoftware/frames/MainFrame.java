@@ -311,48 +311,48 @@ public class MainFrame {
         });
         btnModify.setBounds(290, 267, 89, 23);
         panel_1.add(btnModify);
-        
+
         JLabel lblEnterMatchData = new JLabel("Enter Match Data");
         lblEnterMatchData.setBounds(294, 480, 94, 14);
         panel_1.add(lblEnterMatchData);
-        
+
         JLabel lblMatch_1 = new JLabel("Match #");
         lblMatch_1.setBounds(218, 506, 46, 14);
         panel_1.add(lblMatch_1);
-        
+
         JLabel lblBlueScore_1 = new JLabel("Blue Score");
         lblBlueScore_1.setBounds(306, 506, 60, 14);
         panel_1.add(lblBlueScore_1);
-        
+
         JLabel lblRedScore_1 = new JLabel("Red Score");
         lblRedScore_1.setBounds(411, 506, 65, 14);
         panel_1.add(lblRedScore_1);
-        
+
         textField_18 = new JTextField();
         textField_18.setBounds(178, 528, 86, 20);
         panel_1.add(textField_18);
         textField_18.setColumns(10);
-        
+
         textField_19 = new JTextField();
         textField_19.setBounds(289, 531, 86, 20);
         panel_1.add(textField_19);
         textField_19.setColumns(10);
-        
+
         textField_20 = new JTextField();
         textField_20.setBounds(393, 528, 86, 20);
         panel_1.add(textField_20);
         textField_20.setColumns(10);
-        
+
         JButton btnEnter = new JButton("Enter");
         btnEnter.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                   if (main.getMatchHandler().updatePartialMatch(Integer.valueOf(textField_18.getText()), Integer.valueOf(textField_19.getText()), Integer.valueOf(textField_20.getText()))) {
-                       textField_18.setText(null);
-                       textField_19.setText(null);
-                       textField_20.setText(null);
-                       textField_18.transferFocus();
-                   }
+                    if (main.getMatchHandler().updatePartialMatch(Integer.valueOf(textField_18.getText()), Integer.valueOf(textField_19.getText()), Integer.valueOf(textField_20.getText()))) {
+                        textField_18.setText(null);
+                        textField_19.setText(null);
+                        textField_20.setText(null);
+                        textField_18.transferFocus();
+                    }
                 } catch (NumberFormatException ex) {
                     Main.error("Expected number, got " + ex.getMessage());
                 }
