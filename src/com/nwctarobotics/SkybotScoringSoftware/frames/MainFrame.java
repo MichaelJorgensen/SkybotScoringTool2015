@@ -61,11 +61,11 @@ public class MainFrame {
         panel_1.add(lblRecordNewMatch);
 
         JLabel lblModifyOldMatch = new JLabel("Modify Old Match");
-        lblModifyOldMatch.setBounds(294, 181, 104, 14);
+        lblModifyOldMatch.setBounds(310, 265, 104, 14);
         panel_1.add(lblModifyOldMatch);
 
         JLabel lblDeleteMatch = new JLabel("Delete Match");
-        lblDeleteMatch.setBounds(302, 319, 81, 14);
+        lblDeleteMatch.setBounds(318, 403, 81, 14);
         panel_1.add(lblDeleteMatch);
 
         textField_3 = new JTextField();
@@ -170,74 +170,74 @@ public class MainFrame {
 
         textField_10 = new JTextField();
         textField_10.setColumns(10);
-        textField_10.setBounds(10, 225, 86, 20);
+        textField_10.setBounds(26, 309, 86, 20);
         panel_1.add(textField_10);
 
         JLabel label = new JLabel("Match #");
-        label.setBounds(26, 210, 46, 14);
+        label.setBounds(42, 294, 46, 14);
         panel_1.add(label);
 
         textField_11 = new JTextField();
         textField_11.setColumns(10);
-        textField_11.setBounds(294, 225, 86, 20);
+        textField_11.setBounds(310, 309, 86, 20);
         panel_1.add(textField_11);
 
         JLabel label_1 = new JLabel("Blue 1");
-        label_1.setBounds(310, 210, 46, 14);
+        label_1.setBounds(326, 294, 46, 14);
         panel_1.add(label_1);
 
         textField_12 = new JTextField();
         textField_12.setColumns(10);
-        textField_12.setBounds(390, 225, 86, 20);
+        textField_12.setBounds(406, 309, 86, 20);
         panel_1.add(textField_12);
 
         JLabel label_2 = new JLabel("Blue 2");
-        label_2.setBounds(406, 210, 46, 14);
+        label_2.setBounds(422, 294, 46, 14);
         panel_1.add(label_2);
 
         JLabel label_3 = new JLabel("Red 1");
-        label_3.setBounds(508, 210, 46, 14);
+        label_3.setBounds(524, 294, 46, 14);
         panel_1.add(label_3);
 
         textField_13 = new JTextField();
         textField_13.setColumns(10);
-        textField_13.setBounds(485, 225, 86, 20);
+        textField_13.setBounds(501, 309, 86, 20);
         panel_1.add(textField_13);
 
         textField_14 = new JTextField();
         textField_14.setColumns(10);
-        textField_14.setBounds(581, 225, 86, 20);
+        textField_14.setBounds(597, 309, 86, 20);
         panel_1.add(textField_14);
 
         JLabel label_4 = new JLabel("Red 2");
-        label_4.setBounds(599, 210, 46, 14);
+        label_4.setBounds(615, 294, 46, 14);
         panel_1.add(label_4);
 
         JLabel label_5 = new JLabel("Blue Score");
-        label_5.setBounds(116, 210, 65, 14);
+        label_5.setBounds(132, 294, 65, 14);
         panel_1.add(label_5);
 
         textField_15 = new JTextField();
         textField_15.setColumns(10);
-        textField_15.setBounds(106, 225, 86, 20);
+        textField_15.setBounds(122, 309, 86, 20);
         panel_1.add(textField_15);
 
         textField_16 = new JTextField();
         textField_16.setColumns(10);
-        textField_16.setBounds(202, 225, 86, 20);
+        textField_16.setBounds(218, 309, 86, 20);
         panel_1.add(textField_16);
 
         JLabel label_6 = new JLabel("Red Score");
-        label_6.setBounds(210, 210, 67, 14);
+        label_6.setBounds(226, 294, 67, 14);
         panel_1.add(label_6);
 
         textField_17 = new JTextField();
         textField_17.setColumns(10);
-        textField_17.setBounds(294, 369, 86, 20);
+        textField_17.setBounds(310, 453, 86, 20);
         panel_1.add(textField_17);
 
         JLabel label_7 = new JLabel("Match #");
-        label_7.setBounds(320, 344, 46, 14);
+        label_7.setBounds(336, 428, 46, 14);
         panel_1.add(label_7);
 
         JButton btnDelete = new JButton("Delete");
@@ -252,7 +252,7 @@ public class MainFrame {
                 }
             }
         });
-        btnDelete.setBounds(294, 400, 89, 23);
+        btnDelete.setBounds(310, 484, 89, 23);
         panel_1.add(btnDelete);
 
         JButton btnModify = new JButton("Modify");
@@ -273,38 +273,38 @@ public class MainFrame {
                 }
             }
         });
-        btnModify.setBounds(290, 267, 89, 23);
+        btnModify.setBounds(306, 351, 89, 23);
         panel_1.add(btnModify);
 
         JLabel lblEnterMatchData = new JLabel("Enter Match Data");
         lblEnterMatchData.setHorizontalAlignment(SwingConstants.CENTER);
-        lblEnterMatchData.setBounds(276, 480, 112, 14);
+        lblEnterMatchData.setBounds(290, 128, 112, 14);
         panel_1.add(lblEnterMatchData);
 
         JLabel lblMatch_1 = new JLabel("Match #");
-        lblMatch_1.setBounds(218, 506, 46, 14);
+        lblMatch_1.setBounds(232, 154, 46, 14);
         panel_1.add(lblMatch_1);
 
         JLabel lblBlueScore_1 = new JLabel("Blue Score");
-        lblBlueScore_1.setBounds(294, 506, 72, 14);
+        lblBlueScore_1.setBounds(308, 154, 72, 14);
         panel_1.add(lblBlueScore_1);
 
         JLabel lblRedScore_1 = new JLabel("Red Score");
-        lblRedScore_1.setBounds(411, 506, 65, 14);
+        lblRedScore_1.setBounds(425, 154, 65, 14);
         panel_1.add(lblRedScore_1);
 
         textField_18 = new JTextField();
-        textField_18.setBounds(178, 528, 86, 20);
+        textField_18.setBounds(192, 176, 86, 20);
         panel_1.add(textField_18);
         textField_18.setColumns(10);
 
         textField_19 = new JTextField();
-        textField_19.setBounds(289, 531, 86, 20);
+        textField_19.setBounds(303, 179, 86, 20);
         panel_1.add(textField_19);
         textField_19.setColumns(10);
 
         textField_20 = new JTextField();
-        textField_20.setBounds(393, 528, 86, 20);
+        textField_20.setBounds(407, 176, 86, 20);
         panel_1.add(textField_20);
         textField_20.setColumns(10);
 
@@ -323,8 +323,16 @@ public class MainFrame {
                 }
             }
         });
-        btnEnter.setBounds(286, 562, 89, 23);
+        btnEnter.setBounds(300, 210, 89, 23);
         panel_1.add(btnEnter);
+
+        JLabel lblOptional = new JLabel("Optional");
+        lblOptional.setBounds(509, 56, 66, 14);
+        panel_1.add(lblOptional);
+
+        JLabel label_8 = new JLabel("Optional");
+        label_8.setBounds(603, 56, 68, 14);
+        panel_1.add(label_8);
 
         JPanel panel_2 = new JPanel();
         tabbedPane.addTab("Match View", null, panel_2, null);
