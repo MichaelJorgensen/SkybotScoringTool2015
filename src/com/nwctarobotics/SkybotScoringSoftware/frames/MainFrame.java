@@ -142,8 +142,9 @@ public class MainFrame {
                             textField_5.setText(null);
                             textField_6.setText(null);
                             textField_7.setText(null);
-                            return;
+                            textField_3.requestFocus();
                         }
+                        return;
                     } catch (NumberFormatException ex) {
                         Main.error("Number expected, but got " + ex.getMessage());
                         return;
