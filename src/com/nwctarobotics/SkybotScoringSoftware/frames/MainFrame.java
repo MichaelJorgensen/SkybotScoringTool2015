@@ -1,19 +1,24 @@
 package com.nwctarobotics.SkybotScoringSoftware.frames;
 
+import java.awt.Color;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import com.nwctarobotics.SkybotScoringSoftware.Main;
-import javax.swing.JScrollPane;
 
 public class MainFrame {
 
@@ -45,14 +50,21 @@ public class MainFrame {
     private JTextField textField_20;
 
     public MainFrame(final Main main) {
-        initialize();
+        try {
+            initialize();
+        } catch (Exception e) {
+            Main.error("Could not load: " + e.getMessage());
+            return;
+        }
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        tabbedPane.setBackground(SystemColor.menu);
         tabbedPane.setBorder(null);
         tabbedPane.setBounds(0, 0, 699, 639);
         frmSkybotScoringSoftware.getContentPane().add(tabbedPane);
         frmSkybotScoringSoftware.setLocationRelativeTo(null);
 
         panel_1 = new JPanel();
+        panel_1.setBackground(SystemColor.menu);
         tabbedPane.addTab("Matches", null, panel_1, null);
         panel_1.setLayout(null);
 
@@ -179,56 +191,56 @@ public class MainFrame {
 
         textField_11 = new JTextField();
         textField_11.setColumns(10);
-        textField_11.setBounds(310, 309, 86, 20);
+        textField_11.setBounds(117, 309, 86, 20);
         panel_1.add(textField_11);
 
         JLabel label_1 = new JLabel("Blue 1");
-        label_1.setBounds(326, 294, 46, 14);
+        label_1.setBounds(138, 290, 46, 14);
         panel_1.add(label_1);
 
         textField_12 = new JTextField();
         textField_12.setColumns(10);
-        textField_12.setBounds(406, 309, 86, 20);
+        textField_12.setBounds(213, 309, 86, 20);
         panel_1.add(textField_12);
 
         JLabel label_2 = new JLabel("Blue 2");
-        label_2.setBounds(422, 294, 46, 14);
+        label_2.setBounds(234, 290, 46, 14);
         panel_1.add(label_2);
 
         JLabel label_3 = new JLabel("Red 1");
-        label_3.setBounds(524, 294, 46, 14);
+        label_3.setBounds(336, 290, 46, 14);
         panel_1.add(label_3);
 
         textField_13 = new JTextField();
         textField_13.setColumns(10);
-        textField_13.setBounds(501, 309, 86, 20);
+        textField_13.setBounds(308, 309, 86, 20);
         panel_1.add(textField_13);
 
         textField_14 = new JTextField();
         textField_14.setColumns(10);
-        textField_14.setBounds(597, 309, 86, 20);
+        textField_14.setBounds(404, 309, 86, 20);
         panel_1.add(textField_14);
 
         JLabel label_4 = new JLabel("Red 2");
-        label_4.setBounds(615, 294, 46, 14);
+        label_4.setBounds(427, 290, 46, 14);
         panel_1.add(label_4);
 
         JLabel label_5 = new JLabel("Blue Score");
-        label_5.setBounds(132, 294, 65, 14);
+        label_5.setBounds(510, 294, 65, 14);
         panel_1.add(label_5);
 
         textField_15 = new JTextField();
         textField_15.setColumns(10);
-        textField_15.setBounds(122, 309, 86, 20);
+        textField_15.setBounds(499, 309, 86, 20);
         panel_1.add(textField_15);
 
         textField_16 = new JTextField();
         textField_16.setColumns(10);
-        textField_16.setBounds(218, 309, 86, 20);
+        textField_16.setBounds(595, 309, 86, 20);
         panel_1.add(textField_16);
 
         JLabel label_6 = new JLabel("Red Score");
-        label_6.setBounds(226, 294, 67, 14);
+        label_6.setBounds(604, 294, 67, 14);
         panel_1.add(label_6);
 
         textField_17 = new JTextField();
@@ -431,10 +443,12 @@ public class MainFrame {
         return table;
     }
 
-    private void initialize() {
+    private void initialize() throws IOException {
         frmSkybotScoringSoftware = new JFrame();
-        frmSkybotScoringSoftware.setResizable(false);
-        frmSkybotScoringSoftware.setTitle("Skybot Scoring Software");
+        frmSkybotScoringSoftware.setBackground(SystemColor.menu);
+        frmSkybotScoringSoftware.getContentPane().setBackground(Color.WHITE);
+        frmSkybotScoringSoftware.setIconImage(ImageIO.read(new File("res/icon.png")));
+        frmSkybotScoringSoftware.setTitle("Skybot Scoring Tool");
         frmSkybotScoringSoftware.setBounds(100, 100, 715, 677);
         frmSkybotScoringSoftware.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frmSkybotScoringSoftware.getContentPane().setLayout(null);
