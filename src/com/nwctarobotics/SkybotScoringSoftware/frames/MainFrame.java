@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
@@ -23,6 +24,7 @@ import com.nwctarobotics.SkybotScoringSoftware.Main;
 public class MainFrame {
 
     private JFrame frmSkybotScoringSoftware;
+    JProgressBar progressBar;
     private JTextField textField;
     private JTextField textField_1;
     private JTextField textField_2;
@@ -59,7 +61,7 @@ public class MainFrame {
         JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
         tabbedPane.setBackground(SystemColor.menu);
         tabbedPane.setBorder(null);
-        tabbedPane.setBounds(0, 0, 699, 639);
+        tabbedPane.setBounds(0, 0, 709, 648);
         frmSkybotScoringSoftware.getContentPane().add(tabbedPane);
         frmSkybotScoringSoftware.setLocationRelativeTo(null);
 
@@ -73,11 +75,11 @@ public class MainFrame {
         panel_1.add(lblRecordNewMatch);
 
         JLabel lblModifyOldMatch = new JLabel("Modify Old Match");
-        lblModifyOldMatch.setBounds(310, 265, 104, 14);
+        lblModifyOldMatch.setBounds(300, 354, 104, 14);
         panel_1.add(lblModifyOldMatch);
 
         JLabel lblDeleteMatch = new JLabel("Delete Match");
-        lblDeleteMatch.setBounds(318, 403, 81, 14);
+        lblDeleteMatch.setBounds(308, 492, 81, 14);
         panel_1.add(lblDeleteMatch);
 
         textField_3 = new JTextField();
@@ -182,74 +184,74 @@ public class MainFrame {
 
         textField_10 = new JTextField();
         textField_10.setColumns(10);
-        textField_10.setBounds(26, 309, 86, 20);
+        textField_10.setBounds(16, 398, 86, 20);
         panel_1.add(textField_10);
 
         JLabel label = new JLabel("Match #");
-        label.setBounds(42, 294, 46, 14);
+        label.setBounds(32, 383, 46, 14);
         panel_1.add(label);
 
         textField_11 = new JTextField();
         textField_11.setColumns(10);
-        textField_11.setBounds(117, 309, 86, 20);
+        textField_11.setBounds(107, 398, 86, 20);
         panel_1.add(textField_11);
 
         JLabel label_1 = new JLabel("Blue 1");
-        label_1.setBounds(138, 290, 46, 14);
+        label_1.setBounds(128, 379, 46, 14);
         panel_1.add(label_1);
 
         textField_12 = new JTextField();
         textField_12.setColumns(10);
-        textField_12.setBounds(213, 309, 86, 20);
+        textField_12.setBounds(203, 398, 86, 20);
         panel_1.add(textField_12);
 
         JLabel label_2 = new JLabel("Blue 2");
-        label_2.setBounds(234, 290, 46, 14);
+        label_2.setBounds(224, 379, 46, 14);
         panel_1.add(label_2);
 
         JLabel label_3 = new JLabel("Red 1");
-        label_3.setBounds(336, 290, 46, 14);
+        label_3.setBounds(326, 379, 46, 14);
         panel_1.add(label_3);
 
         textField_13 = new JTextField();
         textField_13.setColumns(10);
-        textField_13.setBounds(308, 309, 86, 20);
+        textField_13.setBounds(298, 398, 86, 20);
         panel_1.add(textField_13);
 
         textField_14 = new JTextField();
         textField_14.setColumns(10);
-        textField_14.setBounds(404, 309, 86, 20);
+        textField_14.setBounds(394, 398, 86, 20);
         panel_1.add(textField_14);
 
         JLabel label_4 = new JLabel("Red 2");
-        label_4.setBounds(427, 290, 46, 14);
+        label_4.setBounds(417, 379, 46, 14);
         panel_1.add(label_4);
 
         JLabel label_5 = new JLabel("Blue Score");
-        label_5.setBounds(510, 294, 65, 14);
+        label_5.setBounds(500, 383, 65, 14);
         panel_1.add(label_5);
 
         textField_15 = new JTextField();
         textField_15.setColumns(10);
-        textField_15.setBounds(499, 309, 86, 20);
+        textField_15.setBounds(489, 398, 86, 20);
         panel_1.add(textField_15);
 
         textField_16 = new JTextField();
         textField_16.setColumns(10);
-        textField_16.setBounds(595, 309, 86, 20);
+        textField_16.setBounds(585, 398, 86, 20);
         panel_1.add(textField_16);
 
         JLabel label_6 = new JLabel("Red Score");
-        label_6.setBounds(604, 294, 67, 14);
+        label_6.setBounds(594, 383, 67, 14);
         panel_1.add(label_6);
 
         textField_17 = new JTextField();
         textField_17.setColumns(10);
-        textField_17.setBounds(310, 453, 86, 20);
+        textField_17.setBounds(300, 542, 86, 20);
         panel_1.add(textField_17);
 
         JLabel label_7 = new JLabel("Match #");
-        label_7.setBounds(336, 428, 46, 14);
+        label_7.setBounds(326, 517, 46, 14);
         panel_1.add(label_7);
 
         JButton btnDelete = new JButton("Delete");
@@ -264,7 +266,7 @@ public class MainFrame {
                 }
             }
         });
-        btnDelete.setBounds(310, 484, 89, 23);
+        btnDelete.setBounds(300, 573, 89, 23);
         panel_1.add(btnDelete);
 
         JButton btnModify = new JButton("Modify");
@@ -285,7 +287,7 @@ public class MainFrame {
                 }
             }
         });
-        btnModify.setBounds(306, 351, 89, 23);
+        btnModify.setBounds(296, 440, 89, 23);
         panel_1.add(btnModify);
 
         JLabel lblEnterMatchData = new JLabel("Enter Match Data");
@@ -346,6 +348,16 @@ public class MainFrame {
         label_8.setBounds(603, 56, 68, 14);
         panel_1.add(label_8);
 
+        progressBar = new JProgressBar();
+        progressBar.setToolTipText("Percentage of matches with scores");
+        progressBar.setBounds(269, 309, 146, 14);
+        progressBar.setMinimum(0);
+        panel_1.add(progressBar);
+
+        JLabel lblCompetitionProgress = new JLabel("Competition Progress");
+        lblCompetitionProgress.setBounds(281, 273, 157, 14);
+        panel_1.add(lblCompetitionProgress);
+
         JPanel panel_2 = new JPanel();
         tabbedPane.addTab("Match View", null, panel_2, null);
         panel_2.setLayout(null);
@@ -380,7 +392,7 @@ public class MainFrame {
 
         panel = new JPanel();
         panel.setBorder(null);
-        tabbedPane.addTab("Teams", null, panel, null);
+        tabbedPane.addTab("Teams (Not Used)", null, panel, null);
         panel.setLayout(null);
 
         textField = new JTextField();
@@ -443,8 +455,13 @@ public class MainFrame {
         return table;
     }
 
+    public JProgressBar getProgressBar() {
+        return progressBar;
+    }
+
     private void initialize() throws IOException {
         frmSkybotScoringSoftware = new JFrame();
+        frmSkybotScoringSoftware.setResizable(false);
         frmSkybotScoringSoftware.setBackground(SystemColor.menu);
         frmSkybotScoringSoftware.getContentPane().setBackground(Color.WHITE);
         frmSkybotScoringSoftware.setIconImage(ImageIO.read(new File("res/icon.png")));

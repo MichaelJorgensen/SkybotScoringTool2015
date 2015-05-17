@@ -62,6 +62,11 @@ public class Main {
         return m;
     }
 
+    public void setProgressBar(int sub, int full) {
+        mainFrame.getProgressBar().setMaximum(full);
+        mainFrame.getProgressBar().setValue(sub);
+    }
+
     private void setupSQL() {
         sql = new SQL(new SQLiteOptions(new File("Skybot.db")));
         send("Opening connection to db");

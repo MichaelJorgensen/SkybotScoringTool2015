@@ -26,6 +26,7 @@ public class MatchHandler {
     public void refreshMatches() {
         Main.send("refreshing matches");
         HashMap<Integer, Match> newMatches = new HashMap<Integer, Match>();
+        int partialMatches = 0;
         try {
             ResultSet rs = main.getSQL().query("SELECT * FROM skybotMatches");
             while (rs.next()) {
@@ -37,6 +38,9 @@ public class MatchHandler {
                 int blueScore = rs.getInt("blueScore");
                 int redScore = rs.getInt("redScore");
                 newMatches.put(id, new Match(id, new Team(blue1), new Team(blue2), new Team(red1), new Team(red2), blueScore, redScore));
+                if (blueScore == -1 || redScore == -1) {
+                    partialMatches++;
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -46,6 +50,7 @@ public class MatchHandler {
             d.setRowCount(0);
             return;
         }
+        main.setProgressBar(newMatches.size() - partialMatches, newMatches.size());
         d.setRowCount(0);
         for (Entry<Integer, Match> en : newMatches.entrySet()) {
             d.addRow(new Object[] { en.getKey(), en.getValue().getBlue1().getName(), en.getValue().getBlue2().getName(), en.getValue().getRed1().getName(), en.getValue().getRed2().getName(), en.getValue().getBlueScore(), en.getValue().getRedScore() });
@@ -75,7 +80,7 @@ public class MatchHandler {
         refreshMatches();
         if (!matches.containsKey(id)) {
             try {
-                main.getSQL().query("INSERT INTO skybotMatches (matchID, blue1, blue2, red1, red2, blueScore, redScore) VALUES (" + id + ", '" + blue1 + "', '" + blue2 + "', '" + red1 + "', '" + red2 + "', " + 0 + ", " + 0 + ")");
+                main.getSQL().query("INSERT INTO skybotMatches (matchID, blue1, blue2, red1, red2, blueScore, redScore) VALUES (" + id + ", '" + blue1 + "', '" + blue2 + "', '" + red1 + "', '" + red2 + "', " + -1 + ", " + -1 + ")");
                 refreshMatches();
                 return true;
             } catch (SQLException e) {
