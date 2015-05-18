@@ -48,6 +48,7 @@ public class MatchHandler {
         if (newMatches.isEmpty()) {
             matches.clear();
             d.setRowCount(0);
+            main.setProgressBar(0, 0);
             return;
         }
         main.setProgressBar(newMatches.size() - partialMatches, newMatches.size());
