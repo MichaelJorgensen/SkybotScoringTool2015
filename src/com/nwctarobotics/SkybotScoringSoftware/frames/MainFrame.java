@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -65,6 +64,62 @@ public class MainFrame {
         tabbedPane.setBounds(0, 0, 709, 648);
         frmSkybotScoringSoftware.getContentPane().add(tabbedPane);
         frmSkybotScoringSoftware.setLocationRelativeTo(null);
+        
+                panel = new JPanel();
+                panel.setBorder(null);
+                tabbedPane.addTab("Teams", null, panel, null);
+                panel.setLayout(null);
+                
+                        textField = new JTextField();
+                        textField.setBounds(0, 15, 150, 20);
+                        panel.add(textField);
+                        textField.setColumns(10);
+                        
+                                JButton btnRemoveTeam = new JButton("Add Team");
+                                btnRemoveTeam.setBounds(10, 46, 125, 23);
+                                panel.add(btnRemoveTeam);
+                                
+                                        textField_1 = new JTextField();
+                                        textField_1.setBounds(175, 15, 150, 20);
+                                        panel.add(textField_1);
+                                        textField_1.setColumns(10);
+                                        
+                                                JButton button = new JButton("Remove Team");
+                                                button.setBounds(185, 46, 125, 23);
+                                                panel.add(button);
+                                                
+                                                        JLabel lblTeamList = new JLabel("Team List");
+                                                        lblTeamList.setBounds(10, 80, 67, 14);
+                                                        panel.add(lblTeamList);
+                                                        lblTeamList.setHorizontalAlignment(SwingConstants.CENTER);
+                                                        
+                                                                textField_2 = new JTextField();
+                                                                textField_2.setBounds(0, 100, 684, 20);
+                                                                panel.add(textField_2);
+                                                                textField_2.setColumns(10);
+                                                                
+                                                                        btnRefresh = new JButton("Refresh");
+                                                                        btnRefresh.setBounds(10, 131, 89, 23);
+                                                                        panel.add(btnRefresh);
+                                                                        btnRefresh.addActionListener(new ActionListener() {
+                                                                            public void actionPerformed(ActionEvent e) {
+                                                                                main.getTeamHandler().refreshTeams(true);
+                                                                            }
+                                                                        });
+                                                                        button.addActionListener(new ActionListener() {
+                                                                            public void actionPerformed(ActionEvent e) {
+                                                                                if (main.getTeamHandler().removeTeam(textField_1.getText())) {
+                                                                                    textField_1.setText(null);
+                                                                                }
+                                                                            }
+                                                                        });
+                                                                        btnRemoveTeam.addActionListener(new ActionListener() {
+                                                                            public void actionPerformed(ActionEvent e) {
+                                                                                if (main.getTeamHandler().addTeam(textField.getText())) {
+                                                                                    textField.setText(null);
+                                                                                }
+                                                                            }
+                                                                        });
 
         panel_1 = new JPanel();
         panel_1.setBackground(SystemColor.menu);
@@ -119,7 +174,7 @@ public class MainFrame {
         textField_9.setColumns(10);
 
         JLabel lblMatch = new JLabel("Match #");
-        lblMatch.setBounds(26, 21, 46, 14);
+        lblMatch.setBounds(32, 21, 46, 14);
         panel_1.add(lblMatch);
 
         JLabel lblBlue = new JLabel("Blue 1");
@@ -139,11 +194,11 @@ public class MainFrame {
         panel_1.add(lblRed_1);
 
         JLabel lblBlueScore = new JLabel("Blue Score");
-        lblBlueScore.setBounds(499, 21, 65, 14);
+        lblBlueScore.setBounds(510, 21, 65, 14);
         panel_1.add(lblBlueScore);
 
         JLabel lblRedScore = new JLabel("Red Score");
-        lblRedScore.setBounds(593, 21, 67, 14);
+        lblRedScore.setBounds(604, 21, 67, 14);
         panel_1.add(lblRedScore);
 
         JButton btnRecord = new JButton("Record");
@@ -297,7 +352,7 @@ public class MainFrame {
         panel_1.add(lblEnterMatchData);
 
         JLabel lblMatch_1 = new JLabel("Match #");
-        lblMatch_1.setBounds(232, 154, 46, 14);
+        lblMatch_1.setBounds(218, 154, 46, 14);
         panel_1.add(lblMatch_1);
 
         JLabel lblBlueScore_1 = new JLabel("Blue Score");
@@ -366,7 +421,7 @@ public class MainFrame {
         JButton btnRefresh_1 = new JButton("Refresh");
         btnRefresh_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                main.getMatchHandler().refreshMatches();
+                main.getMatchHandler().refreshMatches(true);
             }
         });
         btnRefresh_1.setBounds(301, 21, 89, 23);
@@ -406,67 +461,11 @@ public class MainFrame {
         JButton button_1 = new JButton("Refresh");
         button_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                main.getMatchHandler().refreshMatches();
+                main.getMatchHandler().refreshMatches(true);
             }
         });
         button_1.setBounds(301, 21, 89, 23);
         panel_3.add(button_1);
-
-        panel = new JPanel();
-        panel.setBorder(null);
-        tabbedPane.addTab("Teams (Not Used)", null, panel, null);
-        panel.setLayout(null);
-
-        textField = new JTextField();
-        textField.setBounds(0, 15, 150, 20);
-        panel.add(textField);
-        textField.setColumns(10);
-
-        JButton btnRemoveTeam = new JButton("Add Team");
-        btnRemoveTeam.setBounds(10, 46, 125, 23);
-        panel.add(btnRemoveTeam);
-
-        textField_1 = new JTextField();
-        textField_1.setBounds(175, 15, 150, 20);
-        panel.add(textField_1);
-        textField_1.setColumns(10);
-
-        JButton button = new JButton("Remove Team");
-        button.setBounds(185, 46, 125, 23);
-        panel.add(button);
-
-        JLabel lblTeamList = new JLabel("Team List");
-        lblTeamList.setBounds(10, 80, 67, 14);
-        panel.add(lblTeamList);
-        lblTeamList.setHorizontalAlignment(SwingConstants.CENTER);
-
-        textField_2 = new JTextField();
-        textField_2.setBounds(0, 100, 684, 20);
-        panel.add(textField_2);
-        textField_2.setColumns(10);
-
-        btnRefresh = new JButton("Refresh");
-        btnRefresh.setBounds(10, 131, 89, 23);
-        panel.add(btnRefresh);
-        btnRefresh.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                main.getTeamHandler().refreshTeams();
-            }
-        });
-        button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (main.getTeamHandler().removeTeam(textField_1.getText())) {
-                    textField_1.setText(null);
-                }
-            }
-        });
-        btnRemoveTeam.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (main.getTeamHandler().addTeam(textField.getText())) {
-                    textField.setText(null);
-                }
-            }
-        });
     }
 
     public JTextField getTeamList() {

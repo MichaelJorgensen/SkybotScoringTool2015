@@ -39,6 +39,7 @@ public class Main {
         mainFrame = new MainFrame(this);
         h = new TeamHandler(this, mainFrame.getTeamList(), mainFrame.getResultsTable());
         m = new MatchHandler(this, mainFrame.getMatchTable());
+        h.refreshResults();
         loadingFrame.destroy();
     }
 

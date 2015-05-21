@@ -20,10 +20,10 @@ public class MatchHandler {
         this.main = main;
         d.setColumnIdentifiers(columns);
         table.setModel(d);
-        refreshMatches();
+        refreshMatches(false);
     }
 
-    public void refreshMatches() {
+    public void refreshMatches(boolean updateRanks) {
         Main.send("Retrieving match information");
         HashMap<Integer, Match> newMatches = new HashMap<Integer, Match>();
         int partialMatches = 0;
@@ -59,14 +59,16 @@ public class MatchHandler {
         }
         matches.clear();
         matches.putAll(newMatches);
+        if (updateRanks)
+        	main.getTeamHandler().refreshResults();
     }
 
     public boolean recordMatch(int id, String blue1, String blue2, String red1, String red2, int blueScore, int redScore) {
-        refreshMatches();
+        refreshMatches(false);
         if (!matches.containsKey(id)) {
             try {
                 main.getSQL().query("INSERT INTO skybotMatches (matchID, blue1, blue2, red1, red2, blueScore, redScore) VALUES (" + id + ", '" + blue1 + "', '" + blue2 + "', '" + red1 + "', '" + red2 + "', " + blueScore + ", " + redScore + ")");
-                refreshMatches();
+                refreshMatches(true);
                 return true;
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -79,11 +81,11 @@ public class MatchHandler {
     }
 
     public boolean recordPartialMatch(int id, String blue1, String blue2, String red1, String red2) {
-        refreshMatches();
+        refreshMatches(false);
         if (!matches.containsKey(id)) {
             try {
                 main.getSQL().query("INSERT INTO skybotMatches (matchID, blue1, blue2, red1, red2, blueScore, redScore) VALUES (" + id + ", '" + blue1 + "', '" + blue2 + "', '" + red1 + "', '" + red2 + "', " + -1 + ", " + -1 + ")");
-                refreshMatches();
+                refreshMatches(false);
                 return true;
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -96,11 +98,11 @@ public class MatchHandler {
     }
 
     public boolean modifyMatch(int id, String blue1, String blue2, String red1, String red2, int blueScore, int redScore) {
-        refreshMatches();
+        refreshMatches(false);
         if (matches.containsKey(id)) {
             try {
                 main.getSQL().query("UPDATE skybotMatches SET blue1='" + blue1 + "', blue2='" + blue2 + "', red1='" + red1 + "', red2='" + red2 + "', blueScore=" + blueScore + ", redScore=" + redScore + " WHERE matchID=" + id);
-                refreshMatches();
+                refreshMatches(true);
                 return true;
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -113,11 +115,11 @@ public class MatchHandler {
     }
 
     public boolean updatePartialMatch(int id, int blueScore, int redScore) {
-        refreshMatches();
+        refreshMatches(false);
         if (matches.containsKey(id)) {
             try {
                 main.getSQL().query("UPDATE skybotMatches SET blueScore=" + blueScore + ", redScore=" + redScore + " WHERE matchID=" + id);
-                refreshMatches();
+                refreshMatches(true);
                 return true;
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -130,11 +132,11 @@ public class MatchHandler {
     }
 
     public boolean deleteMatch(int id) {
-        refreshMatches();
+        refreshMatches(false);
         if (matches.containsKey(id)) {
             try {
                 main.getSQL().query("DELETE FROM skybotMatches WHERE matchID=" + id);
-                refreshMatches();
+                refreshMatches(true);
                 return true;
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -144,5 +146,9 @@ public class MatchHandler {
             Main.error("Match does not exist");
         }
         return false;
+    }
+    
+    public HashMap<Integer, Match> getMatches() {
+    	return matches;
     }
 }
