@@ -4,7 +4,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class TeamHandler {
 
@@ -12,9 +14,14 @@ public class TeamHandler {
     private JTextField teamList;
     private HashMap<String, Team> teams = new HashMap<String, Team>();
 
-    public TeamHandler(Main main, JTextField teamList) {
+    private DefaultTableModel d = new DefaultTableModel(0, 4);
+    private String[] columns = new String[] { "Team Name", "Wins", "Losses", "Average Score" };
+
+    public TeamHandler(Main main, JTextField teamList, JTable resultsTable) {
         this.main = main;
         this.teamList = teamList;
+        d.setColumnIdentifiers(columns);
+        resultsTable.setModel(d);
         refreshTeams();
     }
 
@@ -43,6 +50,14 @@ public class TeamHandler {
         teamList.setText(sb.toString());
         teams.clear();
         teams.putAll(newTeams);
+    }
+
+    public void refreshResults() {
+        Main.send("Refreshing results..");
+        if (teams.isEmpty()) {
+            Main.error("There are no teams for which to calculate the results for");
+            return;
+        }
     }
 
     public boolean addTeam(String name) {

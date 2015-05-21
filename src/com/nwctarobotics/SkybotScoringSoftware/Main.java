@@ -37,7 +37,7 @@ public class Main {
     public Main() {
         setupSQL();
         mainFrame = new MainFrame(this);
-        h = new TeamHandler(this, mainFrame.getTeamList());
+        h = new TeamHandler(this, mainFrame.getTeamList(), mainFrame.getResultsTable());
         m = new MatchHandler(this, mainFrame.getMatchTable());
         loadingFrame.destroy();
     }

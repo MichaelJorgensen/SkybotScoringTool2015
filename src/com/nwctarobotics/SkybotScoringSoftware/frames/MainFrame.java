@@ -46,6 +46,7 @@ public class MainFrame {
     private JTextField textField_16;
     private JTextField textField_17;
     private JTable table;
+    private JTable resultsTable;
     private JTextField textField_18;
     private JTextField textField_19;
     private JTextField textField_20;
@@ -383,12 +384,33 @@ public class MainFrame {
         panel_2.add(btnLaunchPrettyVersion);
 
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(10, 55, 674, 545);
+        scrollPane.setBounds(10, 55, 684, 554);
         panel_2.add(scrollPane);
 
         table = new JTable();
         scrollPane.setViewportView(table);
         table.setColumnSelectionAllowed(true);
+
+        JPanel panel_3 = new JPanel();
+        tabbedPane.addTab("Results", null, panel_3, null);
+        panel_3.setLayout(null);
+
+        JScrollPane scrollPane_1 = new JScrollPane();
+        scrollPane_1.setBounds(10, 55, 684, 554);
+        panel_3.add(scrollPane_1);
+
+        resultsTable = new JTable();
+        resultsTable.setColumnSelectionAllowed(true);
+        scrollPane_1.setViewportView(resultsTable);
+
+        JButton button_1 = new JButton("Refresh");
+        button_1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                main.getMatchHandler().refreshMatches();
+            }
+        });
+        button_1.setBounds(301, 21, 89, 23);
+        panel_3.add(button_1);
 
         panel = new JPanel();
         panel.setBorder(null);
@@ -453,6 +475,10 @@ public class MainFrame {
 
     public JTable getMatchTable() {
         return table;
+    }
+
+    public JTable getResultsTable() {
+        return resultsTable;
     }
 
     public JProgressBar getProgressBar() {

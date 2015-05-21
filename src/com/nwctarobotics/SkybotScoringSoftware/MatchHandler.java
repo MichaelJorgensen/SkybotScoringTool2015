@@ -13,8 +13,8 @@ public class MatchHandler {
     private Main main;
     private HashMap<Integer, Match> matches = new HashMap<Integer, Match>();
 
-    DefaultTableModel d = new DefaultTableModel(0, 7);
-    String[] columns = new String[] { "Match #", "Blue 1", "Blue 2", "Red 1", "Red 2", "Blue Score", "Red Score" };
+    private DefaultTableModel d = new DefaultTableModel(0, 7);
+    private String[] columns = new String[] { "Match #", "Blue 1", "Blue 2", "Red 1", "Red 2", "Blue Score", "Red Score" };
 
     public MatchHandler(Main main, JTable table) {
         this.main = main;
@@ -24,7 +24,7 @@ public class MatchHandler {
     }
 
     public void refreshMatches() {
-        Main.send("refreshing matches");
+        Main.send("Retrieving match information");
         HashMap<Integer, Match> newMatches = new HashMap<Integer, Match>();
         int partialMatches = 0;
         try {
@@ -45,6 +45,7 @@ public class MatchHandler {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        Main.send("Updating match table");
         if (newMatches.isEmpty()) {
             matches.clear();
             d.setRowCount(0);
