@@ -490,7 +490,7 @@ public class MainFrame {
         frmSkybotScoringSoftware.setResizable(false);
         frmSkybotScoringSoftware.setBackground(SystemColor.menu);
         frmSkybotScoringSoftware.getContentPane().setBackground(Color.WHITE);
-        frmSkybotScoringSoftware.setIconImage(new ImageIcon(getClass().getResource("/icon.png")).getImage());
+        //frmSkybotScoringSoftware.setIconImage(new ImageIcon(getClass().getResource("/icon.png")).getImage());
         frmSkybotScoringSoftware.setTitle("Skybot Scoring Tool");
         frmSkybotScoringSoftware.setBounds(100, 100, 715, 677);
         frmSkybotScoringSoftware.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
