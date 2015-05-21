@@ -4,10 +4,9 @@ import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -55,6 +54,7 @@ public class MainFrame {
         try {
             initialize();
         } catch (Exception e) {
+            e.printStackTrace();
             Main.error("Could not load: " + e.getMessage());
             return;
         }
@@ -464,7 +464,7 @@ public class MainFrame {
         frmSkybotScoringSoftware.setResizable(false);
         frmSkybotScoringSoftware.setBackground(SystemColor.menu);
         frmSkybotScoringSoftware.getContentPane().setBackground(Color.WHITE);
-        frmSkybotScoringSoftware.setIconImage(ImageIO.read(new File("res/icon.png")));
+        frmSkybotScoringSoftware.setIconImage(new ImageIcon(getClass().getResource("/icon.png")).getImage());
         frmSkybotScoringSoftware.setTitle("Skybot Scoring Tool");
         frmSkybotScoringSoftware.setBounds(100, 100, 715, 677);
         frmSkybotScoringSoftware.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

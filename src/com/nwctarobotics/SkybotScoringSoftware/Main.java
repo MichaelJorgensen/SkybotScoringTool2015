@@ -76,6 +76,7 @@ public class Main {
             sql.createTable("CREATE TABLE IF NOT EXISTS skybotMatches (matchID INT(23), blue1 VARCHAR(255), blue2 VARCHAR(255), red1 VARCHAR(255), red2 VARCHAR(255), blueScore INT(23), redScore INT(23))");
         } catch (SQLException e) {
             e.printStackTrace();
+            Main.error("Error connecting to DB: " + e.getMessage());
         }
     }
 }
