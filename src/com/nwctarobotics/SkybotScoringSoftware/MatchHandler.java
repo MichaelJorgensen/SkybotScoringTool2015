@@ -60,7 +60,7 @@ public class MatchHandler {
         matches.clear();
         matches.putAll(newMatches);
         if (updateRanks)
-        	main.getTeamHandler().refreshResults();
+            main.getTeamHandler().refreshResults();
     }
 
     public boolean recordMatch(int id, String blue1, String blue2, String red1, String red2, int blueScore, int redScore) {
@@ -147,8 +147,8 @@ public class MatchHandler {
         }
         return false;
     }
-    
+
     public HashMap<Integer, Match> getMatches() {
-    	return matches;
+        return matches;
     }
 }

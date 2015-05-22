@@ -47,25 +47,22 @@ public class Match {
     public int getRedScore() {
         return redScore;
     }
-    
+
     public boolean containsTeam(String team) {
-    	return  (blue1.getName().equalsIgnoreCase(team) || blue2.getName().equalsIgnoreCase(team) || red1.getName().equalsIgnoreCase(team) || red2.getName().equalsIgnoreCase(team));
+        return (blue1.getName().equalsIgnoreCase(team) || blue2.getName().equalsIgnoreCase(team) || red1.getName().equalsIgnoreCase(team) || red2.getName().equalsIgnoreCase(team));
     }
-    
+
     public MatchPosition getTeamPosition(String team) {
-    	if (blue1.getName().equalsIgnoreCase(team)) {
-    		return MatchPosition.Blue1;
-    	}
-    	else if (blue2.getName().equalsIgnoreCase(team)) {
-    		return MatchPosition.Blue2;
-    	}
-    	else if (red1.getName().equalsIgnoreCase(team)) {
-    		return MatchPosition.Red1;
-    	}
-    	else if (red2.getName().equalsIgnoreCase(team)) {
-    		return MatchPosition.Red2;
-    	} else {
-    		return null;
-    	}
+        if (blue1.getName().equalsIgnoreCase(team)) {
+            return MatchPosition.Blue1;
+        } else if (blue2.getName().equalsIgnoreCase(team)) {
+            return MatchPosition.Blue2;
+        } else if (red1.getName().equalsIgnoreCase(team)) {
+            return MatchPosition.Red1;
+        } else if (red2.getName().equalsIgnoreCase(team)) {
+            return MatchPosition.Red2;
+        } else {
+            return null;
+        }
     }
 }

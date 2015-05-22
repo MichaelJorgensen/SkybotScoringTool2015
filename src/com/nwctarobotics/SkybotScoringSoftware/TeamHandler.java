@@ -52,7 +52,7 @@ public class TeamHandler {
         teams.clear();
         teams.putAll(newTeams);
         if (updateRanks)
-        	refreshResults();
+            refreshResults();
     }
 
     public void refreshResults() {
@@ -64,44 +64,42 @@ public class TeamHandler {
         d.setRowCount(0);
         HashMap<Integer, Match> matches = main.getMatchHandler().getMatches();
         for (String t : teams.keySet()) {
-        	double wins = 0;
-        	double losses = 0;
-        	double ties = 0;
-        	double totalScore = 0;
-        	for (Entry<Integer, Match> en : matches.entrySet()) {
-        		if (en.getValue().getBlueScore() == -1 || en.getValue().getRedScore() == -1) {
-        			continue;
-        		}
-        		MatchPosition p = en.getValue().getTeamPosition(t);
-        		if (p != null) {
-        			if (p == MatchPosition.Blue1 || p == MatchPosition.Blue2) {
-        				totalScore += en.getValue().getBlueScore();
-        				if (en.getValue().getBlueScore() > en.getValue().getRedScore()) {
-        					wins++;
-        				}
-        				else if (en.getValue().getBlueScore() < en.getValue().getRedScore()) {
-        					losses++;
-        				} else {
-        					ties++;
-        				}
-        			} else {
-        				totalScore += en.getValue().getRedScore();
-        				if (en.getValue().getBlueScore() > en.getValue().getRedScore()) {
-        					losses++;
-        				}
-        				else if (en.getValue().getBlueScore() < en.getValue().getRedScore()) {
-        					wins++;
-        				} else {
-        					ties++;
-        				}
-        			}
-        		}
-        	}
-        	double averageScore = totalScore / (wins + losses + ties);
-        	if (totalScore == 0) {
-        		averageScore = 0;
-        	}
-        	d.addRow(new Object[] { t, (int) wins, (int) losses, (int) ties, averageScore });
+            double wins = 0;
+            double losses = 0;
+            double ties = 0;
+            double totalScore = 0;
+            for (Entry<Integer, Match> en : matches.entrySet()) {
+                if (en.getValue().getBlueScore() == -1 || en.getValue().getRedScore() == -1) {
+                    continue;
+                }
+                MatchPosition p = en.getValue().getTeamPosition(t);
+                if (p != null) {
+                    if (p == MatchPosition.Blue1 || p == MatchPosition.Blue2) {
+                        totalScore += en.getValue().getBlueScore();
+                        if (en.getValue().getBlueScore() > en.getValue().getRedScore()) {
+                            wins++;
+                        } else if (en.getValue().getBlueScore() < en.getValue().getRedScore()) {
+                            losses++;
+                        } else {
+                            ties++;
+                        }
+                    } else {
+                        totalScore += en.getValue().getRedScore();
+                        if (en.getValue().getBlueScore() > en.getValue().getRedScore()) {
+                            losses++;
+                        } else if (en.getValue().getBlueScore() < en.getValue().getRedScore()) {
+                            wins++;
+                        } else {
+                            ties++;
+                        }
+                    }
+                }
+            }
+            double averageScore = totalScore / (wins + losses + ties);
+            if (totalScore == 0) {
+                averageScore = 0;
+            }
+            d.addRow(new Object[] { t, (int) wins, (int) losses, (int) ties, averageScore });
         }
     }
 
