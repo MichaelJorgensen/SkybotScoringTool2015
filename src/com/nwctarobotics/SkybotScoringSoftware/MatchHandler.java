@@ -5,7 +5,9 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class MatchHandler {
@@ -20,6 +22,15 @@ public class MatchHandler {
         this.main = main;
         d.setColumnIdentifiers(columns);
         table.setModel(d);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        table.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+        table.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
+        table.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
+        table.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );
+        table.getColumnModel().getColumn(4).setCellRenderer( centerRenderer );
+        table.getColumnModel().getColumn(5).setCellRenderer( centerRenderer );
+        table.getColumnModel().getColumn(6).setCellRenderer( centerRenderer );
         refreshMatches(false);
     }
 

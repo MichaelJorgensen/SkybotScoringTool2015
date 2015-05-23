@@ -5,8 +5,10 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class TeamHandler {
@@ -23,6 +25,13 @@ public class TeamHandler {
         this.teamList = teamList;
         d.setColumnIdentifiers(columns);
         resultsTable.setModel(d);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        resultsTable.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+        resultsTable.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
+        resultsTable.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
+        resultsTable.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );
+        resultsTable.getColumnModel().getColumn(4).setCellRenderer( centerRenderer );
         refreshTeams(false);
     }
 

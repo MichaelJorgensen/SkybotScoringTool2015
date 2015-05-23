@@ -1,6 +1,7 @@
 package com.nwctarobotics.SkybotScoringSoftware.frames;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,13 +23,15 @@ import com.nwctarobotics.SkybotScoringSoftware.Main;
 public class MainFrame {
 
     private JFrame frmSkybotScoringSoftware;
-    JProgressBar progressBar;
+    private JProgressBar progressBar;
     private JTextField textField;
     private JTextField textField_1;
     private JTextField textField_2;
     private JButton btnRefresh;
     private JPanel panel;
     private JPanel panel_1;
+    private JScrollPane scrollPane;
+    private JScrollPane scrollPane_1;
     private JTextField textField_3;
     private JTextField textField_4;
     private JTextField textField_5;
@@ -431,14 +434,14 @@ public class MainFrame {
         btnLaunchPrettyVersion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (!AudienceFrame.deployed) {
-                    new AudienceFrame();
+                    new AudienceFrame(main);
                 }
             }
         });
         btnLaunchPrettyVersion.setBounds(466, 21, 200, 23);
         panel_2.add(btnLaunchPrettyVersion);
 
-        JScrollPane scrollPane = new JScrollPane();
+        scrollPane = new JScrollPane();
         scrollPane.setBounds(10, 55, 684, 554);
         panel_2.add(scrollPane);
 
@@ -446,18 +449,22 @@ public class MainFrame {
         scrollPane.setViewportView(table);
         table.setColumnSelectionAllowed(true);
         table.setAutoCreateRowSorter(true);
+        table.setFont(new Font("Serif", Font.PLAIN, 25));
+        table.setRowHeight(30);
 
         JPanel panel_3 = new JPanel();
         tabbedPane.addTab("Results", null, panel_3, null);
         panel_3.setLayout(null);
 
-        JScrollPane scrollPane_1 = new JScrollPane();
+        scrollPane_1 = new JScrollPane();
         scrollPane_1.setBounds(10, 55, 684, 554);
         panel_3.add(scrollPane_1);
 
         resultsTable = new JTable();
         resultsTable.setColumnSelectionAllowed(true);
         resultsTable.setAutoCreateRowSorter(true);
+        resultsTable.setFont(new Font("Serif", Font.PLAIN, 25));
+        resultsTable.setRowHeight(30);
         scrollPane_1.setViewportView(resultsTable);
 
         JButton button_1 = new JButton("Refresh");
@@ -484,6 +491,14 @@ public class MainFrame {
 
     public JProgressBar getProgressBar() {
         return progressBar;
+    }
+    
+    public void resetMatchView() {
+        scrollPane.setViewportView(table);
+    }
+    
+    public void resetResultsView() {
+        scrollPane_1.setViewportView(resultsTable);
     }
 
     private void initialize() throws IOException {
