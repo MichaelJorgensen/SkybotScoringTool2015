@@ -492,11 +492,11 @@ public class MainFrame {
     public JProgressBar getProgressBar() {
         return progressBar;
     }
-    
+
     public void resetMatchView() {
         scrollPane.setViewportView(table);
     }
-    
+
     public void resetResultsView() {
         scrollPane_1.setViewportView(resultsTable);
     }
@@ -508,7 +508,7 @@ public class MainFrame {
         frmSkybotScoringSoftware.getContentPane().setBackground(Color.WHITE);
         // frmSkybotScoringSoftware.setIconImage(new
         // ImageIcon(getClass().getResource("/icon.png")).getImage());
-        frmSkybotScoringSoftware.setTitle("Skybot Scoring Tool");
+        frmSkybotScoringSoftware.setTitle("Skybot Scoring Tool 2015");
         frmSkybotScoringSoftware.setBounds(100, 100, 715, 677);
         frmSkybotScoringSoftware.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frmSkybotScoringSoftware.getContentPane().setLayout(null);

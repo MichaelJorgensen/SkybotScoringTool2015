@@ -50,7 +50,7 @@ public class Main {
     public static void error(String error) {
         new ErrorFrame(error);
     }
-    
+
     public MainFrame getMainFrame() {
         return mainFrame;
     }

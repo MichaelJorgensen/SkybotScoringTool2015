@@ -65,7 +65,7 @@ public class AudienceFrame extends JFrame {
             }
         });
         panel_1.add(btnSwitchView);
-        btnClose.addActionListener(new AudienceFrameListener(this));
+        btnClose.addActionListener(new AudienceFrameListener(main, this));
         setVisible(true);
         deployed = true;
     }

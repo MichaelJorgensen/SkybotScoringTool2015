@@ -17,21 +17,30 @@ public class TeamHandler {
     private JTextField teamList;
     private HashMap<String, Team> teams = new HashMap<String, Team>();
 
-    private DefaultTableModel d = new DefaultTableModel(0, 4);
+    private DefaultTableModel d;
     private String[] columns = new String[] { "Team Name", "Wins", "Losses", "Ties", "Average Score" };
 
     public TeamHandler(Main main, JTextField teamList, JTable resultsTable) {
         this.main = main;
         this.teamList = teamList;
+        d = new DefaultTableModel() {
+            @Override
+            public Class<?> getColumnClass(int column) {
+                if (column == 4) {
+                    return Double.class;
+                }
+                return super.getColumnClass(column);
+            }
+        };
         d.setColumnIdentifiers(columns);
         resultsTable.setModel(d);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
-        resultsTable.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
-        resultsTable.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
-        resultsTable.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
-        resultsTable.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );
-        resultsTable.getColumnModel().getColumn(4).setCellRenderer( centerRenderer );
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        resultsTable.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+        resultsTable.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
+        resultsTable.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
+        resultsTable.getColumnModel().getColumn(3).setCellRenderer(centerRenderer);
+        resultsTable.getColumnModel().getColumn(4).setCellRenderer(centerRenderer);
         refreshTeams(false);
     }
 

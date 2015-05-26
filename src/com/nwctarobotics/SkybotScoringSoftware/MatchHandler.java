@@ -23,14 +23,14 @@ public class MatchHandler {
         d.setColumnIdentifiers(columns);
         table.setModel(d);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
-        table.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
-        table.getColumnModel().getColumn(1).setCellRenderer( centerRenderer );
-        table.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
-        table.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );
-        table.getColumnModel().getColumn(4).setCellRenderer( centerRenderer );
-        table.getColumnModel().getColumn(5).setCellRenderer( centerRenderer );
-        table.getColumnModel().getColumn(6).setCellRenderer( centerRenderer );
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        table.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+        table.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
+        table.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
+        table.getColumnModel().getColumn(3).setCellRenderer(centerRenderer);
+        table.getColumnModel().getColumn(4).setCellRenderer(centerRenderer);
+        table.getColumnModel().getColumn(5).setCellRenderer(centerRenderer);
+        table.getColumnModel().getColumn(6).setCellRenderer(centerRenderer);
         refreshMatches(false);
     }
 
@@ -66,7 +66,11 @@ public class MatchHandler {
         main.setProgressBar(newMatches.size() - partialMatches, newMatches.size());
         d.setRowCount(0);
         for (Entry<Integer, Match> en : newMatches.entrySet()) {
-            d.addRow(new Object[] { en.getKey(), en.getValue().getBlue1().getName(), en.getValue().getBlue2().getName(), en.getValue().getRed1().getName(), en.getValue().getRed2().getName(), en.getValue().getBlueScore(), en.getValue().getRedScore() });
+            if (en.getValue().getBlueScore() == -1 || en.getValue().getRedScore() == -1) {
+                d.addRow(new Object[] { en.getKey(), en.getValue().getBlue1().getName(), en.getValue().getBlue2().getName(), en.getValue().getRed1().getName(), en.getValue().getRed2().getName(), "", "" });
+            } else {
+                d.addRow(new Object[] { en.getKey(), en.getValue().getBlue1().getName(), en.getValue().getBlue2().getName(), en.getValue().getRed1().getName(), en.getValue().getRed2().getName(), en.getValue().getBlueScore(), en.getValue().getRedScore() });
+            }
         }
         matches.clear();
         matches.putAll(newMatches);
